@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>nekobin</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="description"
+          content="Paste, save and share the link of your text content using a sleek and intuitive interface!">
+    <meta name="theme-color" content="#2B2B2B">
+    <meta name="keywords" content="pastebin,paste,paste tool,code,go,golang">
+
+    <meta property="og:title" content="Nekobin.com &mdash; Elegant and open-source pastebin service">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://nekobin.com/static/img/nekobin.jpg">
+    <meta property="og:url" content="https://nekobin.com/">
+    <meta property="og:description"
+          content="Paste, save and share the link of your text content using a sleek and intuitive interface!">
+    <meta property="og:site_name" content="Nekobin">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="canonical" href="https://nekobin.com/"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.003/web/hack.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/darcula.min.css"/>
+    <link rel="stylesheet" href="static/css/app.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/addon/display/placeholder.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/addon/mode/loadmode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/mode/meta.min.js"></script>
+    <script src="static/js/app.js"></script>
+  </head>
+
+  <body>
+    <header class="unselectable">
+      <div class="title">
+        <a href="/" style="color: #8A8A8A; text-decoration: none">
+          <span>
+            {<i><span style="color: var(--accent-color)"><b>neko</b></span></i>:<i><span
+                      style="color: #A8A8A8">bin</span></i>}
+          </span>
+        </a>
+      </div>
+
+      <div id="url" class="hidden">
+        <i class="fas fa-copy"></i>
+      </div>
+
+      <div class="actions">
+        <button id="save" class="fas fa-save action" disabled></button>
+        <button id="raw" class="fas fa-code action" disabled></button>
+        <button id="new" class="fas fa-plus action"></button>
+        <span class="divider"></span>
+        <button id="theme" class="fas action"></button>
+      </div>
+    </header>
+
+    <div id="content"></div>
+
+    <footer class="unselectable">
+      <div id="copyright">
+        Copyright <i class="far fa-copyright"></i> {{.year}} -
+        <a href="static/img/robi.jpg" target="_blank" class="fas fa-cat" style="text-decoration: none"></a>
+        <a href="https://github.com/delivrance" target="_blank" rel="noopener">Dan</a>
+      </div>
+
+      <div class="links">
+        <div class="link">
+          <i class="fas fa-address-card"></i>
+          <a href="about.md">About</a>
+        </div>
+
+        <div class="link">
+          <i class="fab fa-github"></i>
+          <a href="https://github.com/nekobin/nekobin" target="_blank" rel="noopener">Source</a>
+        </div>
+
+        <div class="link">
+          <i class="fab fa-telegram-plane"></i>
+          <a href="https://t.me/haskell" target="_blank" rel="noopener">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

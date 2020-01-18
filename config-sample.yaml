@@ -1,0 +1,39 @@
+# Main configuration
+nekobin:
+  # Host and port nekobin will bind to
+  host: "0.0.0.0"
+  port: 5555
+
+  # Maximum length for title, author and content
+  max_title_length: 32
+  max_author_length: 32
+  max_content_length: 65536
+
+# Postgres database configuration
+database:
+  # Connection string
+  uri: "postgres://user:pass@host:port/name"
+
+  # Advanced connection pool settings
+  max_idle_conns: 5
+  max_open_conns: 20
+  conn_max_lifetime: 1800
+
+# Endpoints limits. Maximum requests over period (in seconds)
+limits:
+  documents:
+    # GET /api/documents/:key and GET /raw/:key
+    get:
+      - amount: 20
+        period: 5
+      - amount: 10000
+        period: 86400
+
+    # POST /api/documents
+    post:
+      - amount: 10
+        period: 60
+      - amount: 20
+        period: 3600
+      - amount: 50
+        period: 86400

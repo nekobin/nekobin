@@ -122,7 +122,7 @@ func PostDocument(ctx echo.Context) error {
 	}
 
 	return ctx.JSON(
-		http.StatusOK,
+		http.StatusCreated,
 		response.NewResult(doc),
 	)
 }

@@ -32,37 +32,39 @@ import (
 	"time"
 )
 
-type Nekobin struct {
-	Host string `yaml:"host"`
-	Port string `yaml:"port"`
+type (
+	Nekobin struct {
+		Host string `yaml:"host"`
+		Port string `yaml:"port"`
 
-	MaxTitleLength   int `yaml:"max_title_length"`
-	MaxAuthorLength  int `yaml:"max_author_length"`
-	MaxContentLength int `yaml:"max_content_length"`
-}
+		MaxTitleLength   int `yaml:"max_title_length"`
+		MaxAuthorLength  int `yaml:"max_author_length"`
+		MaxContentLength int `yaml:"max_content_length"`
+	}
 
-type Database struct {
-	URI string `yaml:"uri"`
+	Database struct {
+		URI string `yaml:"uri"`
 
-	MaxIdleConns    int           `yaml:"max_idle_conns"`
-	MaxOpenConns    int           `yaml:"max_open_conns"`
-	ConnMaxLifetime time.Duration `yaml:"conn_max_lifetime"`
-}
+		MaxIdleConns    int           `yaml:"max_idle_conns"`
+		MaxOpenConns    int           `yaml:"max_open_conns"`
+		ConnMaxLifetime time.Duration `yaml:"conn_max_lifetime"`
+	}
 
-type Documents struct {
-	Get  []limiter.Limit `yaml:"get"`
-	Post []limiter.Limit `yaml:"post"`
-}
+	Documents struct {
+		Get  []limiter.Limit `yaml:"get"`
+		Post []limiter.Limit `yaml:"post"`
+	}
 
-type Limits struct {
-	Documents Documents `yaml:"documents"`
-}
+	Limits struct {
+		Documents Documents `yaml:"documents"`
+	}
 
-type Config struct {
-	Nekobin  Nekobin  `yaml:"nekobin"`
-	Database Database `yaml:"database"`
-	Limits   Limits   `yaml:"limits"`
-}
+	Config struct {
+		Nekobin  Nekobin  `yaml:"nekobin"`
+		Database Database `yaml:"database"`
+		Limits   Limits   `yaml:"limits"`
+	}
+)
 
 func Load(path string) *Config {
 	file, err := ioutil.ReadFile(path)

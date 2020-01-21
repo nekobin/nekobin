@@ -34,7 +34,7 @@ func GetRoot(ctx echo.Context) error {
 	return ctx.Render(
 		http.StatusOK,
 		"app.html",
-		map[string]interface{}{
+		echo.Map{
 			"year": time.Now().Year(),
 		},
 	)

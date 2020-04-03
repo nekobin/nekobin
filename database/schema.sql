@@ -28,7 +28,7 @@ CREATE TABLE documents
     title   TEXT               DEFAULT NULL,
     author  TEXT               DEFAULT NULL,
     date    TIMESTAMP NOT NULL DEFAULT now(),
-    views   INTEGER            DEFAULT 1 NOT NULL,
+    views   INTEGER   NOT NULL DEFAULT 0,
     length  INTEGER   NOT NULL,
     content TEXT      NOT NULL
 )

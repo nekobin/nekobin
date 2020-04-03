@@ -27,8 +27,6 @@ package main
 import (
 	"fmt"
 	"github.com/labstack/echo/v4"
-	mw "github.com/labstack/echo/v4/middleware"
-	_ "github.com/lib/pq"
 	"html/template"
 	"io"
 	"nekobin/config"
@@ -36,6 +34,9 @@ import (
 	"nekobin/handlers"
 	"nekobin/middleware"
 	"os"
+
+	mw "github.com/labstack/echo/v4/middleware"
+	_ "github.com/lib/pq"
 )
 
 type Template struct {

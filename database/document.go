@@ -29,6 +29,7 @@ import (
 	"github.com/jmoiron/sqlx"
 	"log"
 	"nekobin/keygen"
+	"time"
 )
 
 type Document struct {
@@ -45,19 +46,26 @@ type DocumentsQuery interface {
 	Select(key string) (doc *Document, err error)
 	Insert(title, author *string, content string) (doc *Document, err error)
 	Exists(key string) (exists bool, err error)
-	IncrementViews(key string)
+	IncrementViews(key, ip string)
+}
+
+type ViewIPsKey struct {
+	documentKey string
+	ipAddress   string
 }
 
 type Documents struct {
 	*sqlx.DB
 
-	keygen keygen.Keygen
+	keygen  keygen.Keygen
+	viewIPs map[ViewIPsKey]time.Time
 }
 
 func NewDocuments(db *sqlx.DB) *Documents {
 	return &Documents{
-		DB:     db,
-		keygen: keygen.NewPhoneticKeygen(),
+		DB:      db,
+		keygen:  keygen.NewPhoneticKeygen(),
+		viewIPs: make(map[ViewIPsKey]time.Time),
 	}
 }
 
@@ -130,7 +138,16 @@ func (docs *Documents) Exists(key string) (exists bool, err error) {
 	return
 }
 
-func (docs *Documents) IncrementViews(key string) {
+func (docs *Documents) IncrementViews(key, ip string) {
+	viewIPsKey := ViewIPsKey{key, ip}
+	value, exists := docs.viewIPs[viewIPsKey]
+
+	if exists && time.Now().Sub(value).Minutes() < 30 {
+		return
+	}
+
+	docs.viewIPs[viewIPsKey] = time.Now()
+
 	rows, err := docs.Query("UPDATE documents SET views = views + 1 WHERE key = $1", key)
 
 	if err != nil {

@@ -54,7 +54,7 @@ func GetDocument(ctx echo.Context) error {
 		)
 	}
 
-	go db.Documents.IncrementViews(key)
+	go db.Documents.IncrementViews(key, ctx.RealIP())
 
 	return ctx.JSON(
 		http.StatusOK,
@@ -120,6 +120,8 @@ func PostDocument(ctx echo.Context) error {
 	if err != nil {
 		return err
 	}
+
+	go db.Documents.IncrementViews(doc.Key, ctx.RealIP())
 
 	return ctx.JSON(
 		http.StatusCreated,

@@ -45,7 +45,7 @@ func GetRawDocument(ctx echo.Context) error {
 		)
 	}
 
-	go db.Documents.IncrementViews(key)
+	go db.Documents.IncrementViews(key, ctx.RealIP())
 
 	if doc.Title != nil {
 		ctx.Response().Header().Set("Document-Title", *doc.Title)

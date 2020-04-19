@@ -25,10 +25,12 @@
 package database
 
 import (
-	"github.com/jmoiron/sqlx"
 	"log"
-	"nekobin/config"
 	"time"
+
+	"github.com/nekobin/nekobin/config"
+
+	"github.com/jmoiron/sqlx"
 )
 
 type Database struct {

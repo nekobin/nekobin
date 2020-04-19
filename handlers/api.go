@@ -25,12 +25,14 @@
 package handlers
 
 import (
-	"github.com/labstack/echo/v4"
-	"nekobin/config"
-	"nekobin/database"
-	"nekobin/response"
 	"net/http"
 	"strings"
+
+	"github.com/nekobin/nekobin/config"
+	"github.com/nekobin/nekobin/database"
+	"github.com/nekobin/nekobin/response"
+
+	"github.com/labstack/echo/v4"
 )
 
 func GetAbout(ctx echo.Context) error {

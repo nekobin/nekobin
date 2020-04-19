@@ -25,11 +25,13 @@
 package config
 
 import (
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
-	"nekobin/limiter"
 	"time"
+
+	"github.com/nekobin/nekobin/limiter"
+
+	"gopkg.in/yaml.v2"
 )
 
 type (

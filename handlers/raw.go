@@ -25,12 +25,14 @@
 package handlers
 
 import (
-	"github.com/labstack/echo/v4"
-	"nekobin/database"
-	"nekobin/response"
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/nekobin/nekobin/database"
+	"github.com/nekobin/nekobin/response"
+
+	"github.com/labstack/echo/v4"
 )
 
 func GetRawDocument(ctx echo.Context) error {

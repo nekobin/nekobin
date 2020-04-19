@@ -26,14 +26,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/labstack/echo/v4"
 	"html/template"
 	"io"
-	"nekobin/config"
-	"nekobin/database"
-	"nekobin/handlers"
-	"nekobin/middleware"
 	"os"
+
+	"github.com/nekobin/nekobin/config"
+	"github.com/nekobin/nekobin/database"
+	"github.com/nekobin/nekobin/handlers"
+	"github.com/nekobin/nekobin/middleware"
+
+	"github.com/labstack/echo/v4"
 
 	mw "github.com/labstack/echo/v4/middleware"
 	_ "github.com/lib/pq"

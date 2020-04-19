@@ -25,14 +25,16 @@
 package middleware
 
 import (
-	"github.com/labstack/echo/v4"
 	"io/ioutil"
 	"log"
-	"nekobin/config"
-	"nekobin/database"
-	"nekobin/limiter"
-	"nekobin/response"
 	"net/http"
+
+	"github.com/nekobin/nekobin/config"
+	"github.com/nekobin/nekobin/database"
+	"github.com/nekobin/nekobin/limiter"
+	"github.com/nekobin/nekobin/response"
+
+	"github.com/labstack/echo/v4"
 )
 
 // Middleware to add the configuration in handlers

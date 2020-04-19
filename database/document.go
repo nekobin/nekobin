@@ -26,10 +26,12 @@ package database
 
 import (
 	"fmt"
-	"github.com/jmoiron/sqlx"
 	"log"
-	"nekobin/keygen"
 	"time"
+
+	"github.com/nekobin/nekobin/keygen"
+
+	"github.com/jmoiron/sqlx"
 )
 
 type Document struct {

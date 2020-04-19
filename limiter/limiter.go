@@ -25,10 +25,11 @@
 package limiter
 
 import (
-	"golang.org/x/time/rate"
 	"sort"
 	"sync"
 	"time"
+
+	"golang.org/x/time/rate"
 )
 
 type Limit struct {

@@ -29,9 +29,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/nekobin/nekobin/keygen"
-
 	"github.com/jmoiron/sqlx"
+
+	"github.com/nekobin/nekobin/keygen"
 )
 
 type Document struct {

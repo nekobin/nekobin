@@ -28,9 +28,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/nekobin/nekobin/config"
-
 	"github.com/jmoiron/sqlx"
+
+	"github.com/nekobin/nekobin/config"
 )
 
 type Database struct {

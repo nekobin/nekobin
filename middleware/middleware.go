@@ -29,12 +29,12 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/labstack/echo/v4"
+
 	"github.com/nekobin/nekobin/config"
 	"github.com/nekobin/nekobin/database"
 	"github.com/nekobin/nekobin/limiter"
 	"github.com/nekobin/nekobin/response"
-
-	"github.com/labstack/echo/v4"
 )
 
 // Middleware to add the configuration in handlers

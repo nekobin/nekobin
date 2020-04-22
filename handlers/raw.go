@@ -29,10 +29,10 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/labstack/echo/v4"
+
 	"github.com/nekobin/nekobin/database"
 	"github.com/nekobin/nekobin/response"
-
-	"github.com/labstack/echo/v4"
 )
 
 func GetRawDocument(ctx echo.Context) error {

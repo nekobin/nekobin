@@ -29,9 +29,9 @@ import (
 	"log"
 	"time"
 
-	"github.com/nekobin/nekobin/limiter"
-
 	"gopkg.in/yaml.v2"
+
+	"github.com/nekobin/nekobin/limiter"
 )
 
 type (

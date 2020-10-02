@@ -27,6 +27,7 @@ package database
 import (
 	"fmt"
 	"log"
+	"sync"
 	"time"
 
 	"github.com/jmoiron/sqlx"
@@ -61,6 +62,7 @@ type Documents struct {
 
 	keygen  keygen.Keygen
 	viewIPs map[ViewIPsKey]time.Time
+	mu      *sync.Mutex
 }
 
 func NewDocuments(db *sqlx.DB) *Documents {
@@ -68,6 +70,7 @@ func NewDocuments(db *sqlx.DB) *Documents {
 		DB:      db,
 		keygen:  keygen.NewPhoneticKeygen(),
 		viewIPs: make(map[ViewIPsKey]time.Time),
+		mu:      &sync.Mutex{},
 	}
 }
 
@@ -141,6 +144,9 @@ func (docs *Documents) Exists(key string) (exists bool, err error) {
 }
 
 func (docs *Documents) IncrementViews(key, ip string) {
+	docs.mu.Lock()
+	defer docs.mu.Unlock()
+
 	viewIPsKey := ViewIPsKey{key, ip}
 	value, exists := docs.viewIPs[viewIPsKey]
 

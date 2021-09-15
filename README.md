@@ -27,8 +27,6 @@ Although it is already publicly available and is perfectly usable, you can expec
 
 Current priority: frontend rework using a modern approach and a proper UI framework.
 
-Feedbacks are very welcome, just [open an issue](../../issues/new) and let us discuss.
-
 ## License
 
 MIT © 2020 [Dan](https://github.com/delivrance)

@@ -1,0 +1,26 @@
+services:
+    nekobin:
+        build: .
+        depends_on: # wait for postgres to start
+            - postgres
+        ports:
+            - "5555:5555"
+        volumes:
+            - "./config.yaml:/app/config.yaml" # mount the config file
+        container_name: nekobin
+        restart: unless-stopped # restart the nekobin if it crashes
+
+    # postgres database
+    # you can use any postgres image you want
+    # just make sure to change the uri in config.yaml
+    # example: uri: "postgres://user:pass@postgres:5432/nekobin?sslmode=disable"
+    postgres:
+        image: postgres:13.3-alpine
+        environment:
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: pass
+            POSTGRES_DB: nekobin
+        volumes:
+            - "./postgres-data:/var/lib/postgresql/data" # mount the postgres data
+        container_name: postgres
+        restart: unless-stopped # restart the postgres if it crashes
